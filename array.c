@@ -2,7 +2,7 @@
 
 int main()
 {
-    int b[]={1,2,3,4};
+    int b[]={1,2,3,5};
     int a[4][4];
     for(int i=0;i<4;i++)
     for(int j=0;j<4;j++)
