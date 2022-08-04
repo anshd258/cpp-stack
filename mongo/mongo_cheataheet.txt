@@ -1,6 +1,6 @@
 MONGO DB CHEET SHEET 
 
-Basic commands
+Basic commands--------------------------------------------------------------------------------------------------------------------
 
 view all databases ( show dbs)
 craete or switch a new data (use <name of dtabase>)
@@ -16,7 +16,7 @@ delete a collection  (db.<collection name>.drop)
 
 show all rows in the collection  (db.<name of the collection>.find()) to make it pretty (db.<name of the collection>.find().pretty())
 
-ROW / document COMMANDS
+ROW / document COMMANDS------------------------------------------------------------------------------------------------------
 
 inserting one ROW
 db.<name of colection>.insert({})
@@ -82,7 +82,7 @@ db.student.insert(
     }
 )
 
-UPDATING THE DATABASE
+UPDATING THE DATABASE---------------------------------------------------------------------------------------------------------------------
 
       db.<name_of collection>.updateone({damage:2000},{$set:{damage:5000}})
 
@@ -101,3 +101,76 @@ if data you want to update is not preent and want to add it use
 
 
         this will check the db if not found will add the data in db its pdate+insert
+
+
+REMOVE FROM DATABASE-------------------------------------------------------------------------------------------------------
+
+     we want to remove specific key oar value from database
+
+       db.<name of colection>.remove({"key":"value"})
+
+
+       example
+
+       db.conter.remove({"damage":2640})
+
+FIND FUNCTION------------------------------------------------------------------------------------------------------------------------
+
+     db.<collection name>.find()
+
+     it can also be used to find specific key
+
+      db.<collection name>.find({"key":"value"})
+
+      example
+
+      db.conter.find({"damage":5000})
+
+      if we want to limit te no of recordd showing
+
+      db.<collection name>.find().limit("any no")
+
+      if we want to sort te data ten
+
+      db.<collection name>.find().sort({"key"})
+
+      if want in accending order use 1 and for decending order we use -1
+
+      db.<collection name>.find().sort({"key":-1})
+
+      db.<collection name>.find().sort({"key":1})
+
+      for embaddedd document we need to find 
+
+      db.<collection name>.find({"key"."embadded key":"value"}) 
+
+      to find specific key in les ten grater ten format
+
+      db.<collection name>.find({"key":{$gt:"number"}})
+
+      db.<collection name>.find({"key":{$lt:"number"}})
+
+      in between a specific range
+
+      db.<collection name>.find({"key":{$in:["any","number"]}})
+
+
+ EXPLAINING THE STATES OF THE DATA AND INDEXING ----------------------------------------------------------------------------------
+
+
+ to get the status of the value 
+
+    db.<collection name>.explain("execution status").find({key:"value"})
+
+
+to know about indexes
+
+ db.<collection name>.getIndexes()
+
+to create a new key as an index  use 1 for acending and -1 for decending
+
+   db.<collection name>.createIndex({"key":1})
+
+
+
+
