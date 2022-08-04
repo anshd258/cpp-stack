@@ -1,0 +1,103 @@
+MONGO DB CHEET SHEET 
+
+Basic commands
+
+view all databases ( show dbs)
+craete or switch a new data (use <name of dtabase>)
+check the database you are in (db)
+delet database  (db.dropDatabase())
+show collections (show collections)
+
+create a collection (db.createCollection('name')) we can enable capping in this command by (db.createCollection('name',{capped:true,size:5234550,max:5}))
+ this means that max size of collection is 5mb and can insert 5 documents. the size is fixed for collection so 4 doc can also have a size fo 5 mb which
+  ever encounterd first 
+
+delete a collection  (db.<collection name>.drop)
+
+show all rows in the collection  (db.<name of the collection>.find()) to make it pretty (db.<name of the collection>.find().pretty())
+
+ROW / document COMMANDS
+
+inserting one ROW
+db.<name of colection>.insert({})
+example:
+db.student.insert(
+    {
+        Name: "Akshay", 
+        Marks: 500
+    }
+)
+
+for inserting many rows
+
+db.comments.insertMany([{
+    'name': 'Harry',
+    'lang': 'JavaScript',
+    'member_since': 5
+    }, 
+    {'name': 'Rohan',
+    'lang': 'Python',
+    'member_since': 3
+    },
+    {'name': 'Lovish',
+    'lang': 'Java',
+    'member_since': 4
+}])
+another way to insert is by creating a variable 
+
+example
+var coll=[{name:"avi",power:"elastic",damage:2640},
+{name:"aditi",power:"hammer",damage:2940},
+{name:"rajveer",power:"sniper",damage:3940},
+{name:"chirag",power:"necromencer",damage:5940}]
+
+now add variable in data base
+
+db.conter.insert(coll);
+
+ working with embadded document
+
+ db.student.insert(
+    {
+        Name: "Akshay", 
+        Marks: {                     // this part is embedded bcz
+            maths:50,               // th ey dont have primary key of there own they dependent upon the collection student
+            english:60,
+            science:90
+        }
+    }
+)
+
+we can change hte id by changing id in document ( _id:<anynumber>)
+example
+db.student.insert(
+    {
+        _id:205,
+        Name: "Akshay", 
+        Marks: {                    
+            maths:50,               
+            english:60,
+            science:90
+        }
+    }
+)
+
+UPDATING THE DATABASE
+
+      db.<name_of collection>.updateone({damage:2000},{$set:{damage:5000}})
+
+but this will only update the first document it will encounter having the dmage 
+
+for multiple updation 
+
+      db.<name_of collection>.updatemany({damage:2000},{$set:{damage:5000}})
+
+this will update multiple documents having dmage 2000
+
+
+if data you want to update is not preent and want to add it use 
+
+        db.conter.updateMany({damage:6000},{$set:{damage:2500}},{upsert:true})
+
+
+        this will check the db if not found will add the data in db its pdate+insert
