@@ -30,28 +30,9 @@ int main()
                             product = i*j*k;
                         }
 
-
-
                     }}
-
-
-
             }
-
-
-
-
-
     }
-
             cout<<"The product is:"<<product<<endl;
-
-
-
-
-
-
-
-
-return 0;
+            return 0;
 }
