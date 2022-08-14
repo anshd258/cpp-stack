@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<stack>
 using namespace std  ;
 
 
@@ -49,4 +50,14 @@ int main()
   cout<<s1.isValid(g);
 
 }
+
+
+
+
+
+
+
+
+
+
 
