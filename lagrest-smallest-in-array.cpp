@@ -4,12 +4,14 @@ using namespace std;
 int main()
 {
     int great,low,n;
-    cout<<"enter number";
-    cin>>n;
+    printf("enter te array values");
+    scanf("%d",&n);
+
+    
     int arr[n];
     for (int i = 0; i < n; i++)
     {
-        cin>>arr[i];
+        scanf("%d",&arr[i]);
     }
     
 
@@ -24,6 +26,7 @@ int main()
         if(arr[i]<low)
         low = arr[i];
     }
-   cout<<"greatest is "<<great<<"\n";
-   cout<<"lowest is "<<low;
+   printf("greatest %d \n",great);
+
+   printf("lowes %d",low);
 }
