@@ -3,11 +3,20 @@ using namespace std;
 
 int main()
 {
-    int great,low;
-    int arr[10]= {5,7,8,3,9,12,55,0,68,52};
+    int great,low,n;
+    cout<<"enter number";
+    cin>>n;
+    int arr[n];
+    for (int i = 0; i < n; i++)
+    {
+        cin>>arr[i];
+    }
+    
+
+
     great= arr[0];
     low=arr[0];
-    for(int i=1;i<10;i++){
+    for(int i=1;i<n;i++){
     
         if(arr[i]>great)
         great=arr[i];
@@ -15,6 +24,6 @@ int main()
         if(arr[i]<low)
         low = arr[i];
     }
-   cout<<great<<"\n";
-   cout<<low;
+   cout<<"greatest is "<<great<<"\n";
+   cout<<"lowest is "<<low;
 }
