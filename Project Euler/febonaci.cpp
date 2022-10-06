@@ -3,13 +3,13 @@
 /// By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
 
 
-#include <iostream>
-#include <vector>
+#include<iostream>
+#include<vector>
 using namespace std;
 
 int main()
 {
-    long int i,a=0,b=1,temp,target,sum=0;
+    long int i,a=0,b=1,temp=1,target,sum=0;
 
 
 
@@ -17,20 +17,22 @@ int main()
     cout<<"Enter Target:"<<endl;
     cin>>target;
 
-
-    for( a=0,b=1,temp=0 ; temp < target ; temp=a+b,a=b,b=temp)
+ cout<<a<<endl;
+     cout<<b<<endl;
+     cout<<temp<<endl;
+    for( int i ; i < target ; i++)
     {
 
-        if( temp % 2 == 0)
-        {
-            sum += temp;
-        }
+        a=b;
+        b=temp;
+        temp=a+b;
 
-
-
+    
+     cout<<temp<<endl;
+    
 
     }
-    cout<<"Sum is:"<<sum;
+    
 
     return 0;
 }
