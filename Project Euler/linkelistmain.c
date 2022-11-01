@@ -33,7 +33,7 @@ void insertAfter(struct Node* n)
       
     }
 
-  
+
 }
 
 void beggining(struct Node** head_ref)
@@ -52,6 +52,7 @@ void beggining(struct Node** head_ref)
   
    
     (*head_ref)   = new_node;
+ 
 }
 
 void endadd(struct Node* n)
@@ -83,7 +84,7 @@ void endadd(struct Node* n)
 
     last->next = new_node;
     return;   
-    
+   
 
 }
 
@@ -91,7 +92,7 @@ void endadd(struct Node* n)
 void printList(struct Node* n)
 {
     while (n != NULL) {
-        printf(" %d ", n->data);
+        printf(" -> %d  ", n->data);
         n = n->next;
     }
     printf("\n");
@@ -127,10 +128,77 @@ static void reverse(struct Node** head_ref)
         current = next;
     }
     *head_ref = prev;
+  
+}
+
+struct Node* removeFirstNode(struct Node* head)
+{
+    if (head == NULL)
+        return NULL ;
+ 
+    
+    struct Node* temp = head;
+    head = head->next;
+ 
+  free(temp);
+ 
+  return head;
+}
+
+struct Node* removeLastNode(struct Node* head)
+{
+    if (head == NULL)
+        return NULL;
+ 
+    if (head->next == NULL) {
+        free(head);
+        return NULL;
+    }
+ 
+  
+    struct Node* second_last = head;
+    while (second_last->next->next != NULL)
+        second_last = second_last->next;
+ 
+   
+    free (second_last->next);
+ 
+ 
+    second_last->next = NULL;
+   return head;
+   
+}
+void deletepos (struct Node* head)
+{
+     int pos;
+     printf("enter te position\n");
+     scanf("%d",&pos);
+    struct Node* temp = head;
+    int i;
+    if (pos == 0) {
+        printf("\nElement deleted is : %d\n", temp->data);
+        head = head->next; 
+        temp->next = NULL;
+        free(temp);
+    }
+    else {
+        for (i = 0; i < pos - 1; i++) {
+            temp = temp->next;
+        }
+      
+        struct Node* del
+            = temp->next; 
+        temp->next = temp->next->next;
+        printf("\nElement deleted is : %d\n", del->data);
+        del->next = NULL;
+        free(del); 
+    }
+    
+ 
 }
 
 int main()
-{
+{   int coice;
     struct Node* head = NULL;
     struct Node* second = NULL;
     struct Node* third = NULL;
@@ -148,19 +216,71 @@ int main()
   
     third->data = 3; 
     third->next = NULL;
-  
-    beggining(&head);
+    printf("initialized a linked list with 3nodes having data 1,2,3\n");
 
-    printList(head);
-    insertAfter(head);
-    printList(head);
-    endadd(head);
-     printList(head);
-     int c = getCount(head);
-     printf("lengt is %d\n",c);
 
-     reverse(&head);
-     printList(head);
-  
+while (1)
+{
+    printf("1. Add at the Beginning\n");
+printf("2. Add at the End\n");
+printf("3. Add at Specified Position\n");
+printf("4. Display\n");
+printf("5. Count\n");
+printf("6. Reverse\n");
+printf("7. Delete from the Beginning\n");
+printf("8. Delete from the End\n");
+printf("9. Delete from Specified Position\n");
+printf("10, Quit\n");
+printf("Anshdeep Singh      03313202721 \n");
+printf("Enter choice:");
+scanf("%d",&coice);
+    switch (coice)
+    {
+    case 1 :
+        beggining(&head);
+        printList(head);
+        break;
+     case 2 :
+        endadd(head);
+        printList(head);
+        break;
+     case 3 :
+        insertAfter(head);
+        printList(head);
+        break;
+     case 4 :
+        printList(head);
+        break;
+     case 5 :
+        
+     printf("lengt is %d\n", getCount(head));
+        break;
+     case 6 :
+       reverse(&head);
+       printList(head);
+        break;
+    case 7 :
+      head = removeFirstNode(head);
+       printList(head);
+        break;
+    case 8 :
+        head = removeLastNode(head);
+       printList(head);
+        break;
+    case 9 :
+       deletepos(head);
+       printList(head);
+        break;
+    case 10:
+    exit(0);
+    break;
+
+    default:
+        break;
+    }
+}
+
+    
+
     return 0;
 }
